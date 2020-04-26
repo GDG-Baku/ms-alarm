@@ -26,7 +26,7 @@ public class MsArticleService implements AlarmService {
     @Override
     @Retryable(value = Exception.class, backoff = @Backoff(value = 2000))
     public void invoke() {
-        logger.info("ActionLog.msArticle.start");
+        logger.info("ActionLog.msArticle.trying.start");
         msArticleClient.invokeMsArticle();
         logger.info("ActionLog.msArticle.success");
     }

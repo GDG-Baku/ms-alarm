@@ -27,7 +27,7 @@ public class MsTeamService implements AlarmService {
     @Override
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
-        logger.info("ActionLog.msTeam.start");
+        logger.info("ActionLog.msTeam.trying.start");
         msTeamClient.invokeMsTeam();
         logger.info("ActionLog.msTeam.success");
     }

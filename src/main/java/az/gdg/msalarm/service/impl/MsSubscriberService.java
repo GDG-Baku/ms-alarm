@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MsSubscriberService implements AlarmService {
-    private static final Logger logger = LoggerFactory.getLogger(MsComplaintService.class);
+    private static final Logger logger = LoggerFactory.getLogger(MsSubscriberService.class);
     private final MsSubscriberClient msSubscriberClient;
     private final EmailService emailService;
 
