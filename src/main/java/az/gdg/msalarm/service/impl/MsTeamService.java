@@ -3,7 +3,6 @@ package az.gdg.msalarm.service.impl;
 import az.gdg.msalarm.client.MsTeamClient;
 import az.gdg.msalarm.service.AlarmService;
 import az.gdg.msalarm.service.EmailService;
-import az.gdg.msalarm.service.GenericMail;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +35,6 @@ public class MsTeamService implements AlarmService {
     @Recover
     private void msTeamRecover(Exception ex) {
         logger.error("ActionLog.msTeam.failed");
-        new GenericMail(emailService).sendMail("ms-team", ex.getMessage());
+        //new GenericMail(emailService).sendMail("ms-team", ex.getMessage());
     }
 }

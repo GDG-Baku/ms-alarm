@@ -32,12 +32,13 @@ public class AlarmController {
     }
 
     @GetMapping
-    public void invokeOtherApps() {
+    public String invokeOtherApps() {
         //msArticle.invoke();
         msMail.invoke();
         msAuth.invoke();
         msTeam.invoke();
         msComplaint.invoke();
         msSubscriber.invoke();
+        return "All services are invoked";
     }
 }
