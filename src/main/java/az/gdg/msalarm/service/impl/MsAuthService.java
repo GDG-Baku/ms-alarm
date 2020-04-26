@@ -1,6 +1,6 @@
 package az.gdg.msalarm.service.impl;
 
-import az.gdg.msalarm.client.MsArticleClient;
+import az.gdg.msalarm.client.MsAuthClient;
 import az.gdg.msalarm.service.AlarmService;
 import az.gdg.msalarm.service.EmailService;
 import az.gdg.msalarm.service.GenericMail;
@@ -13,29 +13,28 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MsArticleService implements AlarmService {
-    private static final Logger logger = LoggerFactory.getLogger(MsArticleService.class);
-    private final MsArticleClient msArticleClient;
+public class MsAuthService implements AlarmService {
+    private static final Logger logger = LoggerFactory.getLogger(MsAuthService.class);
+    private final MsAuthClient msAuthClient;
     private final EmailService emailService;
 
-    public MsArticleService(MsArticleClient msArticleClient, EmailService emailService) {
-        this.msArticleClient = msArticleClient;
+    public MsAuthService(MsAuthClient msAuthClient, EmailService emailService) {
+        this.msAuthClient = msAuthClient;
         this.emailService = emailService;
     }
 
     @Override
     @Retryable(value = Exception.class, backoff = @Backoff(value = 2000))
     public void invoke() {
-        logger.info("ActionLog.msArticle.start");
-        msArticleClient.invokeMsArticle();
-        logger.info("ActionLog.msArticle.success");
+        logger.info("ActionLog.msAuth.trying.start");
+        msAuthClient.invokeMsAuth();
+        logger.info("ActionLog.msAuth.success");
     }
 
     @Recover
     private void recover(Exception ex) {
-        logger.error("ActionLog.msArticle.failed");
-
-        new GenericMail(emailService).sendMail("ms-article", ex.getMessage());
+        logger.error("ActionLog.msAuth.failed");
+        new GenericMail(emailService).sendMail("ms-auth", ex.getMessage());
     }
 
 
