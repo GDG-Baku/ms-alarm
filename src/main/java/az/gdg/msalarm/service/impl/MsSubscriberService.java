@@ -24,7 +24,7 @@ public class MsSubscriberService implements AlarmService {
     }
 
     @Override
-    @Retryable(value = Exception.class, backoff = @Backoff(value = 2000))
+    @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msSubscriber.trying.start");
         msSubscriberClient.invokeMsSubscriber();

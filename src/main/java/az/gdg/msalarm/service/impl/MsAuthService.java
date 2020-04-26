@@ -23,7 +23,7 @@ public class MsAuthService implements AlarmService {
     }
 
     @Override
-    @Retryable(value = Exception.class, backoff = @Backoff(value = 2000))
+    @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msAuth.trying.start");
         msAuthClient.invokeMsAuth();

@@ -24,7 +24,7 @@ public class MsMailService implements AlarmService {
     }
 
     @Override
-    @Retryable(value = Exception.class, backoff = @Backoff(value = 2000))
+    @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msMail.trying.start");
         msMailClient.invokeMsMail();
