@@ -34,10 +34,10 @@ public class AlarmController {
     @GetMapping
     public void invokeOtherApps() {
         //msArticle.invoke();
-        msTeam.invoke();
+        msMail.invoke();
         msAuth.invoke();
+        msTeam.invoke();
         msComplaint.invoke();
         msSubscriber.invoke();
-        msMail.invoke();
     }
 }
