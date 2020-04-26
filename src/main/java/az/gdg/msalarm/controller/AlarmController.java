@@ -13,13 +13,16 @@ public class AlarmController {
     private final AlarmService msArticle;
     private final AlarmService msTeam;
     private final AlarmService msAuth;
+    private final AlarmService msComplaint;
 
     public AlarmController(@Qualifier("msArticleService") AlarmService msArticle,
                            @Qualifier("msTeamService") AlarmService msTeam,
-                           @Qualifier("msAuthService") AlarmService msAuth) {
+                           @Qualifier("msAuthService") AlarmService msAuth,
+                           @Qualifier("msComplaintService") AlarmService msComplaint) {
         this.msArticle = msArticle;
         this.msTeam = msTeam;
         this.msAuth = msAuth;
+        this.msComplaint = msComplaint;
     }
 
     @GetMapping
@@ -27,5 +30,6 @@ public class AlarmController {
         msArticle.invoke();
         msTeam.invoke();
         msAuth.invoke();
+        msComplaint.invoke();
     }
 }
