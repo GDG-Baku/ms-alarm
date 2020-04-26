@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/wake-up")
+@RequestMapping("/alarm")
 public class AlarmController {
     private final AlarmService msArticle;
     private final AlarmService msTeam;
@@ -33,7 +33,7 @@ public class AlarmController {
 
     @GetMapping
     public void invokeOtherApps() {
-        msArticle.invoke();
+        //msArticle.invoke();
         msTeam.invoke();
         msAuth.invoke();
         msComplaint.invoke();
