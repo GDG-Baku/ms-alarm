@@ -3,6 +3,7 @@ package az.gdg.msalarm.controller;
 import az.gdg.msalarm.service.AlarmService;
 
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,7 @@ public class AlarmController {
         this.msMail = msMail;
     }
 
+    @CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
     @GetMapping
     public String invokeOtherApps() {
         //msArticle.invoke();
