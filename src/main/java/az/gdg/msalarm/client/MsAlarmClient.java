@@ -3,8 +3,8 @@ package az.gdg.msalarm.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(value = "ms-team-client", url = "https://gdg-ms-team.herokuapp.com/api/health")
-public interface MsTeamClient {
+@FeignClient(value = "ms-alarm-client", url = "https://ms-alarm-gdg.herokuapp.com/alarm")
+public interface MsAlarmClient {
     @GetMapping
-    void invokeMsTeam();
+    void invokeMsAlarm();
 }
