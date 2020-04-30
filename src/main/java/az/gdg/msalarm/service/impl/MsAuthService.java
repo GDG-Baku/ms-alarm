@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.annotation.Retryable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,6 +24,7 @@ public class MsAuthService implements AlarmService {
     }
 
     @Override
+    @Scheduled(fixedRate = 20 * 60 * 1000)
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msAuth.trying.start");

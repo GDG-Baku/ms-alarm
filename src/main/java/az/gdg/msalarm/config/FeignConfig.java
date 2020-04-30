@@ -1,5 +1,6 @@
 package az.gdg.msalarm.config;
 
+import az.gdg.msalarm.client.MsAlarmClient;
 import az.gdg.msalarm.client.MsArticleClient;
 import az.gdg.msalarm.client.MsAuthClient;
 import az.gdg.msalarm.client.MsComplaintClient;
@@ -12,6 +13,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableFeignClients(clients = {MsArticleClient.class, MsAuthClient.class, MsComplaintClient.class,
-        MsMailClient.class, MsSubscriberClient.class, MsTeamClient.class})
+        MsMailClient.class, MsSubscriberClient.class, MsTeamClient.class, MsAlarmClient.class})
 public class FeignConfig {
 }
