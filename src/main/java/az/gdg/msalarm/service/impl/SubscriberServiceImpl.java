@@ -35,6 +35,6 @@ public class SubscriberServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msSubscriber.failed");
-        //new GenericMail(queueService).sendMail("ms-subscriber", ex.getMessage());
+        //MailSenderUtil.sendMail("ms-subscriber", ex.getMessage(), queueService);
     }
 }

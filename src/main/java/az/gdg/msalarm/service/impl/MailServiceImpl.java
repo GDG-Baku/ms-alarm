@@ -35,6 +35,6 @@ public class MailServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msMail.failed");
-        //new GenericMail(queueService).sendMail("ms-mail", ex.getMessage());
+        //MailSenderUtil.sendMail("ms-mail", ex.getMessage(), queueService);
     }
 }

@@ -35,7 +35,7 @@ public class AlarmServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msAlarm.failed");
-        //new GenericMail(queueService).sendMail("ms-alarm", ex.getMessage());
+        //MailSenderUtil.sendMail("ms-alarm", ex.getMessage(), queueService);
     }
 }
 

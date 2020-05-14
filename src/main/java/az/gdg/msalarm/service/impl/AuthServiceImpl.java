@@ -35,8 +35,6 @@ public class AuthServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msAuth.failed");
-        //new GenericMail(queueService).sendMail("ms-auth", ex.getMessage());
+        //MailSenderUtil.sendMail("ms-auth", ex.getMessage(), queueService);
     }
-
-
 }

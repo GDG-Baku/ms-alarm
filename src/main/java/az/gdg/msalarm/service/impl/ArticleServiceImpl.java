@@ -35,8 +35,7 @@ public class ArticleServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msArticle.failed");
-        //new GenericMail(queueService).sendMail("ms-article", ex.getMessage());
+        //MailSenderUtil.sendMail("ms-article", ex.getMessage(), queueService);
     }
-
 
 }

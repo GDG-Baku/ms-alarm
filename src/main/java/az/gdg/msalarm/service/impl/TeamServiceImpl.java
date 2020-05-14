@@ -37,6 +37,6 @@ public class TeamServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msTeam.failed");
-        //new GenericMail(queueService).sendMail("ms-team", ex.getMessage());
+        //MailSenderUtil.sendMail("ms-team", ex.getMessage(), queueService);
     }
 }

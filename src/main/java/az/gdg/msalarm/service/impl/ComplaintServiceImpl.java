@@ -35,6 +35,6 @@ public class ComplaintServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msComplaint.failed");
-        //new GenericMail(queueService).sendMail("ms-complaint", ex.getMessage());
+        //MailSenderUtil.sendMail("ms-complaint", ex.getMessage(), queueService);
     }
 }
