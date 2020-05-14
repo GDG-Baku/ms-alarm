@@ -3,8 +3,8 @@ package az.gdg.msalarm.client;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(value = "ms-mail-client", url = "${client.service.url.ms-mail}")
-public interface MsMailClient {
+@FeignClient(value = "ms-alarm-client", url = "${client.service.url.ms-alarm}")
+public interface AlarmClient {
     @GetMapping
-    void invokeMsMail();
+    void invokeMsAlarm();
 }

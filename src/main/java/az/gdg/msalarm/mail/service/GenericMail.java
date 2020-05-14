@@ -1,4 +1,4 @@
-package az.gdg.msalarm.service;
+package az.gdg.msalarm.mail.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,44 +1,40 @@
 package az.gdg.msalarm.service.impl;
 
-import az.gdg.msalarm.mail.MailDto;
-import az.gdg.msalarm.service.MailService;
+import az.gdg.msalarm.client.MailClient;
+import az.gdg.msalarm.mail.service.MailService;
+import az.gdg.msalarm.service.AlarmService;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.messaging.Source;
-import org.springframework.messaging.support.MessageBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-@EnableBinding(Source.class)
-public class MailServiceImpl implements MailService {
-    private final Source source;
+public class MailServiceImpl implements AlarmService {
+    private static final Logger logger = LoggerFactory.getLogger(MailServiceImpl.class);
+    private final MailClient mailClient;
+    private final MailService mailService;
 
-    public MailServiceImpl(Source source) {
-        this.source = source;
+    public MailServiceImpl(MailClient mailClient, MailService mailService) {
+        this.mailClient = mailClient;
+        this.mailService = mailService;
     }
 
     @Override
-    public void sendToQueue(MailDto mailDto) {
-        source.output().send(MessageBuilder.withPayload(mailDto).build());
+    @Scheduled(fixedRate = 20 * 60 * 1000)
+    @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
+    public void invoke() {
+        logger.info("ActionLog.msMail.trying.start");
+        mailClient.invokeMsMail();
+        logger.info("ActionLog.msMail.success");
     }
 
-    @Override
-    public MailDto prepareMail(String mailBody) {
-        List<String> receivers = new ArrayList<>();
-        //receivers.add("gdg.rubber.duck@gmail.com");
-        //receivers.add("movsum.nigar@gmail.com");
-        receivers.add("asif.hajiyev@outlook.com");
-        receivers.add("asifhaciyev1498@gmail.com");
-        //receivers.add("huseynov_ali@outlook.com");
-        //receivers.add("isgandarli_murad@mail.ru");
-
-        return new MailDto().builder()
-                .to(receivers)
-                .body("<h2>" + mailBody + "</h2>")
-                .subject("APP CRASHED")
-                .build();
+    @Recover
+    private void recover(Exception ex) {
+        logger.error("ActionLog.msMail.failed");
+        //new GenericMail(mailService).sendMail("ms-mail", ex.getMessage());
     }
 }

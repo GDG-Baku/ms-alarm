@@ -1,8 +1,8 @@
 package az.gdg.msalarm.service.impl;
 
-import az.gdg.msalarm.client.MsSubscriberClient;
+import az.gdg.msalarm.client.SubscriberClient;
+import az.gdg.msalarm.mail.service.MailService;
 import az.gdg.msalarm.service.AlarmService;
-import az.gdg.msalarm.service.MailService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,13 +13,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MsSubscriberService implements AlarmService {
-    private static final Logger logger = LoggerFactory.getLogger(MsSubscriberService.class);
-    private final MsSubscriberClient msSubscriberClient;
+public class SubscriberServiceImpl implements AlarmService {
+    private static final Logger logger = LoggerFactory.getLogger(SubscriberServiceImpl.class);
+    private final SubscriberClient subscriberClient;
     private final MailService mailService;
 
-    public MsSubscriberService(MsSubscriberClient msSubscriberClient, MailService mailService) {
-        this.msSubscriberClient = msSubscriberClient;
+    public SubscriberServiceImpl(SubscriberClient subscriberClient, MailService mailService) {
+        this.subscriberClient = subscriberClient;
         this.mailService = mailService;
     }
 
@@ -28,7 +28,7 @@ public class MsSubscriberService implements AlarmService {
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msSubscriber.trying.start");
-        msSubscriberClient.invokeMsSubscriber();
+        subscriberClient.invokeMsSubscriber();
         logger.info("ActionLog.msSubscriber.success");
     }
 

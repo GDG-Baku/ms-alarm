@@ -1,8 +1,8 @@
 package az.gdg.msalarm.service.impl;
 
-import az.gdg.msalarm.client.MsTeamClient;
+import az.gdg.msalarm.client.AuthClient;
+import az.gdg.msalarm.mail.service.MailService;
 import az.gdg.msalarm.service.AlarmService;
-import az.gdg.msalarm.service.MailService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,30 +13,30 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MsTeamService implements AlarmService {
-    private static final Logger logger = LoggerFactory.getLogger(MsTeamService.class);
-    private final MsTeamClient msTeamClient;
+public class AuthServiceImpl implements AlarmService {
+    private static final Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
+    private final AuthClient authClient;
     private final MailService mailService;
 
-    public MsTeamService(MsTeamClient msTeamClient, MailService mailService) {
-        this.msTeamClient = msTeamClient;
+    public AuthServiceImpl(AuthClient authClient, MailService mailService) {
+        this.authClient = authClient;
         this.mailService = mailService;
     }
-
 
     @Override
     @Scheduled(fixedRate = 20 * 60 * 1000)
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
-        logger.info("ActionLog.msTeam.trying.start");
-        msTeamClient.invokeMsTeam();
-        logger.info("ActionLog.msTeam.success");
+        logger.info("ActionLog.msAuth.trying.start");
+        authClient.invokeMsAuth();
+        logger.info("ActionLog.msAuth.success");
     }
-
 
     @Recover
     private void recover(Exception ex) {
-        logger.error("ActionLog.msTeam.failed");
-        //new GenericMail(mailService).sendMail("ms-team", ex.getMessage());
+        logger.error("ActionLog.msAuth.failed");
+        //new GenericMail(mailService).sendMail("ms-auth", ex.getMessage());
     }
+
+
 }

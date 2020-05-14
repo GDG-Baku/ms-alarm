@@ -1,8 +1,8 @@
 package az.gdg.msalarm.service.impl;
 
-import az.gdg.msalarm.client.MsAlarmClient;
+import az.gdg.msalarm.client.AlarmClient;
+import az.gdg.msalarm.mail.service.MailService;
 import az.gdg.msalarm.service.AlarmService;
-import az.gdg.msalarm.service.MailService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,13 +13,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MsAlarmService implements AlarmService {
-    private static final Logger logger = LoggerFactory.getLogger(MsAlarmService.class);
-    private final MsAlarmClient msAlarmClient;
+public class AlarmServiceImpl implements AlarmService {
+    private static final Logger logger = LoggerFactory.getLogger(AlarmServiceImpl.class);
+    private final AlarmClient alarmClient;
     private final MailService mailService;
 
-    public MsAlarmService(MsAlarmClient msAlarmClient, MailService mailService) {
-        this.msAlarmClient = msAlarmClient;
+    public AlarmServiceImpl(AlarmClient alarmClient, MailService mailService) {
+        this.alarmClient = alarmClient;
         this.mailService = mailService;
     }
 
@@ -28,7 +28,7 @@ public class MsAlarmService implements AlarmService {
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msAlarm.trying.start");
-        msAlarmClient.invokeMsAlarm();
+        alarmClient.invokeMsAlarm();
         logger.info("ActionLog.msAlarm.success");
     }
 

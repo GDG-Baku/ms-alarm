@@ -1,4 +1,4 @@
-package az.gdg.msalarm.mail;
+package az.gdg.msalarm.mail.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
