@@ -2,7 +2,7 @@ package az.gdg.msalarm.service;
 
 import az.gdg.msalarm.mail.MailDto;
 
-public interface EmailService {
+public interface MailService {
     void sendToQueue(MailDto mailDto);
 
     MailDto prepareMail(String mailBody);
