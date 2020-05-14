@@ -7,3 +7,15 @@ spring:
         output:
           destination: mail
           group: mail-group
+client:
+  service:
+    url:
+      ms-alarm: https://gdg-ms-alarm.herokuapp.com/alarm
+      ms-article: https://gdg-ms-article.herokuapp.com/api/health
+      ms-auth: https://gdg-ms-auth.herokuapp.com/health
+      ms-complaint: https://gdg-ms-complaint.herokuapp.com/health
+      ms-mail: https://gdg-ms-mail.herokuapp.com/health
+      ms-subscriber: https://gdg-ms-subscriber.herokuapp.com/health
+      ms-team: https://ms-team-gdg.herokuapp.com/api/health
+
+
