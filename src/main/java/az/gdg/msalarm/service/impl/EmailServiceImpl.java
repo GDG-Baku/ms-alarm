@@ -1,6 +1,6 @@
 package az.gdg.msalarm.service.impl;
 
-import az.gdg.msalarm.model.MailDto;
+import az.gdg.msalarm.mail.MailDto;
 import az.gdg.msalarm.service.EmailService;
 
 import java.util.ArrayList;

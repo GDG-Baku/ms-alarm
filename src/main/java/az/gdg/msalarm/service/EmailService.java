@@ -1,6 +1,6 @@
 package az.gdg.msalarm.service;
 
-import az.gdg.msalarm.model.MailDto;
+import az.gdg.msalarm.mail.MailDto;
 
 public interface EmailService {
     void sendToQueue(MailDto mailDto);
