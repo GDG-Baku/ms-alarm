@@ -1,4 +1,4 @@
-package az.gdg.msalarm.mail.service;
+package az.gdg.msalarm.service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -6,15 +6,15 @@ import java.util.Date;
 
 public class GenericMail {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-    private final MailService mailService;
+    private final QueueService queueService;
 
-    public GenericMail(MailService mailService) {
-        this.mailService = mailService;
+    public GenericMail(QueueService queueService) {
+        this.queueService = queueService;
     }
 
     public void sendMail(String appName, String errorMessage) {
         String time = dateFormat.format(new Date());
         String mailBody = appName + " crashed at " + time + "<br>" + "<h3>reason:<br>" + errorMessage + "</h3>";
-        mailService.sendToQueue(mailService.prepareMail(mailBody));
+        queueService.sendToQueue(queueService.prepareMail(mailBody));
     }
 }

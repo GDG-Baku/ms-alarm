@@ -1,7 +1,7 @@
-package az.gdg.msalarm.mail.service.impl;
+package az.gdg.msalarm.service.impl;
 
-import az.gdg.msalarm.mail.dto.MailDto;
-import az.gdg.msalarm.mail.service.MailService;
+import az.gdg.msalarm.mail.MailDto;
+import az.gdg.msalarm.service.QueueService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,12 @@ import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
-@Service("rabbit-mq-mail")
+@Service
 @EnableBinding(Source.class)
-public class MailServiceImpl implements MailService {
+public class QueueServiceImpl implements QueueService {
     private final Source source;
 
-    public MailServiceImpl(Source source) {
+    public QueueServiceImpl(Source source) {
         this.source = source;
     }
 

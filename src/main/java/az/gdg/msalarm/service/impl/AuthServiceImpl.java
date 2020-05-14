@@ -1,8 +1,8 @@
 package az.gdg.msalarm.service.impl;
 
 import az.gdg.msalarm.client.AuthClient;
-import az.gdg.msalarm.mail.service.MailService;
 import az.gdg.msalarm.service.AlarmService;
+import az.gdg.msalarm.service.QueueService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AlarmService {
     private static final Logger logger = LoggerFactory.getLogger(AuthServiceImpl.class);
     private final AuthClient authClient;
-    private final MailService mailService;
+    private final QueueService queueService;
 
-    public AuthServiceImpl(AuthClient authClient, MailService mailService) {
+    public AuthServiceImpl(AuthClient authClient, QueueService queueService) {
         this.authClient = authClient;
-        this.mailService = mailService;
+        this.queueService = queueService;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class AuthServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msAuth.failed");
-        //new GenericMail(mailService).sendMail("ms-auth", ex.getMessage());
+        //new GenericMail(queueService).sendMail("ms-auth", ex.getMessage());
     }
 
 

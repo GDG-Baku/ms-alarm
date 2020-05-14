@@ -1,8 +1,8 @@
 package az.gdg.msalarm.service.impl;
 
 import az.gdg.msalarm.client.TeamClient;
-import az.gdg.msalarm.mail.service.MailService;
 import az.gdg.msalarm.service.AlarmService;
+import az.gdg.msalarm.service.QueueService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 public class TeamServiceImpl implements AlarmService {
     private static final Logger logger = LoggerFactory.getLogger(TeamServiceImpl.class);
     private final TeamClient teamClient;
-    private final MailService mailService;
+    private final QueueService queueService;
 
-    public TeamServiceImpl(TeamClient teamClient, MailService mailService) {
+    public TeamServiceImpl(TeamClient teamClient, QueueService queueService) {
         this.teamClient = teamClient;
-        this.mailService = mailService;
+        this.queueService = queueService;
     }
 
 
@@ -37,6 +37,6 @@ public class TeamServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msTeam.failed");
-        //new GenericMail(mailService).sendMail("ms-team", ex.getMessage());
+        //new GenericMail(queueService).sendMail("ms-team", ex.getMessage());
     }
 }

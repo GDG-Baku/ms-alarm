@@ -1,8 +1,8 @@
 package az.gdg.msalarm.service.impl;
 
 import az.gdg.msalarm.client.ArticleClient;
-import az.gdg.msalarm.mail.service.MailService;
 import az.gdg.msalarm.service.AlarmService;
+import az.gdg.msalarm.service.QueueService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,11 +16,11 @@ import org.springframework.stereotype.Service;
 public class ArticleServiceImpl implements AlarmService {
     private static final Logger logger = LoggerFactory.getLogger(ArticleServiceImpl.class);
     private final ArticleClient articleClient;
-    private final MailService mailService;
+    private final QueueService queueService;
 
-    public ArticleServiceImpl(ArticleClient articleClient, MailService mailService) {
+    public ArticleServiceImpl(ArticleClient articleClient, QueueService queueService) {
         this.articleClient = articleClient;
-        this.mailService = mailService;
+        this.queueService = queueService;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ArticleServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msArticle.failed");
-        //new GenericMail(mailService).sendMail("ms-article", ex.getMessage());
+        //new GenericMail(queueService).sendMail("ms-article", ex.getMessage());
     }
 
 
