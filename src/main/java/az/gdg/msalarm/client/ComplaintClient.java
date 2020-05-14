@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(value = "ms-compliant-client", url = "${client.service.url.ms-complaint}")
 public interface ComplaintClient {
     @GetMapping
-    void invokeMsComplaint();
+    void invokeComplaint();
 }

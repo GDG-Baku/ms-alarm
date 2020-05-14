@@ -28,7 +28,7 @@ public class SubscriberServiceImpl implements AlarmService {
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msSubscriber.trying.start");
-        subscriberClient.invokeMsSubscriber();
+        subscriberClient.invokeSubscriber();
         logger.info("ActionLog.msSubscriber.success");
     }
 

@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(value = "ms-mail-client", url = "${client.service.url.ms-mail}")
 public interface MailClient {
     @GetMapping
-    void invokeMsMail();
+    void invokeMail();
 }

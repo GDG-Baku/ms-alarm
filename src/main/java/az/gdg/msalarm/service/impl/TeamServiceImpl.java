@@ -29,7 +29,7 @@ public class TeamServiceImpl implements AlarmService {
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msTeam.trying.start");
-        teamClient.invokeMsTeam();
+        teamClient.invokeTeam();
         logger.info("ActionLog.msTeam.success");
     }
 

@@ -28,7 +28,7 @@ public class AuthServiceImpl implements AlarmService {
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msAuth.trying.start");
-        authClient.invokeMsAuth();
+        authClient.invokeAuth();
         logger.info("ActionLog.msAuth.success");
     }
 

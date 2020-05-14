@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(value = "ms-team-client", url = "${client.service.url.ms-team}")
 public interface TeamClient {
     @GetMapping
-    void invokeMsTeam();
+    void invokeTeam();
 }

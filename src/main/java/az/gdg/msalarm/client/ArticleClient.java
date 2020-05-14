@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(value = "ms-article-client", url = "${client.service.url.ms-article}")
 public interface ArticleClient {
     @GetMapping
-    void invokeMsArticle();
+    void invokeArticle();
 }

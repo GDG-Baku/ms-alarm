@@ -28,7 +28,7 @@ public class ComplaintServiceImpl implements AlarmService {
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msComplaint.trying.start");
-        complaintClient.invokeMsComplaint();
+        complaintClient.invokeComplaint();
         logger.info("ActionLog.msComplaint.success");
     }
 

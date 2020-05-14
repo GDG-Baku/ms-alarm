@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(value = "ms-alarm-client", url = "${client.service.url.ms-alarm}")
 public interface AlarmClient {
     @GetMapping
-    void invokeMsAlarm();
+    void invokeAlarm();
 }
