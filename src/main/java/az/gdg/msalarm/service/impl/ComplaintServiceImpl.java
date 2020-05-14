@@ -3,6 +3,7 @@ package az.gdg.msalarm.service.impl;
 import az.gdg.msalarm.client.ComplaintClient;
 import az.gdg.msalarm.service.AlarmService;
 import az.gdg.msalarm.service.QueueService;
+import az.gdg.msalarm.util.MailSenderUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +36,6 @@ public class ComplaintServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msComplaint.failed");
-        //MailSenderUtil.sendMail("ms-complaint", ex.getMessage(), queueService);
+        MailSenderUtil.sendMail("ms-complaint", ex.getMessage(), queueService);
     }
 }
