@@ -1,3 +1,4 @@
+/*
 package az.gdg.msalarm.service.impl;
 
 import az.gdg.msalarm.client.AuthClient;
@@ -39,3 +40,4 @@ public class AuthServiceImpl implements AlarmService {
         MailSenderUtil.sendMail("ms-auth", ex.getMessage(), queueService);
     }
 }
+*/
