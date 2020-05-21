@@ -26,7 +26,7 @@ public class TeamServiceImpl implements AlarmService {
 
 
     @Override
-    @Scheduled(fixedRate = 20 * 60 * 1000)
+    @Scheduled(fixedRate = 25 * 60 * 1000)
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
     public void invoke() {
         logger.info("ActionLog.msTeam.trying.start");
