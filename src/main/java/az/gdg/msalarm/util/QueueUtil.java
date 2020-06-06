@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QueueUtil {
+    private QueueUtil() {
+
+    }
 
     public static MailDto prepareMailToSendTeamMembers(String mailBody) {
         List<String> receivers = new ArrayList<>();

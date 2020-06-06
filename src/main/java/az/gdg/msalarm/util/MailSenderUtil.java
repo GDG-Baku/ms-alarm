@@ -6,6 +6,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MailSenderUtil {
+    private MailSenderUtil() {
+        
+    }
+
     public static void sendMail(String appName, String errorMessage, QueueService queueService) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         String time = dateFormat.format(new Date());

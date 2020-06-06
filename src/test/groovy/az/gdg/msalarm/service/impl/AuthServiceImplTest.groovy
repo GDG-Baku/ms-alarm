@@ -1,6 +1,5 @@
 package az.gdg.msalarm.service.impl
 
-
 import az.gdg.msalarm.client.AuthClient
 import az.gdg.msalarm.service.QueueService
 import spock.lang.Specification

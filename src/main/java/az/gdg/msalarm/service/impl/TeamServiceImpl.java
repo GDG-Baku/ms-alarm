@@ -24,7 +24,6 @@ public class TeamServiceImpl implements AlarmService {
         this.queueService = queueService;
     }
 
-
     @Override
     @Scheduled(fixedRate = 25 * 60 * 1000)
     @Retryable(value = Exception.class, backoff = @Backoff(value = 5000))
@@ -33,7 +32,6 @@ public class TeamServiceImpl implements AlarmService {
         teamClient.invokeTeam();
         logger.info("ActionLog.msTeam.success");
     }
-
 
     @Recover
     private void recover(Exception ex) {
