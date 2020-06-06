@@ -3,7 +3,7 @@ package az.gdg.msalarm.service.impl;
 import az.gdg.msalarm.client.MailClient;
 import az.gdg.msalarm.service.AlarmService;
 import az.gdg.msalarm.service.QueueService;
-import az.gdg.msalarm.util.MailSenderUtil;
+import az.gdg.msalarm.util.QueueUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +36,6 @@ public class MailServiceImpl implements AlarmService {
     @Recover
     private void recover(Exception ex) {
         logger.error("ActionLog.msMail.failed");
-        MailSenderUtil.sendMail("ms-mail", ex.getMessage(), queueService);
+        QueueUtil.sendMail("ms-mail", ex.getMessage(), queueService);
     }
 }
