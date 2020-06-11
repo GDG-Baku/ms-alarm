@@ -10,12 +10,10 @@ spring:
 client:
   service:
     url:
-      ms-alarm: https://gdg-ms-alarm.herokuapp.com/alarm
-      ms-article: https://gdg-ms-article.herokuapp.com/api/alarm
-      ms-auth: https://gdg-ms-auth.herokuapp.com/alarm
-      ms-complaint: https://gdg-ms-complaint.herokuapp.com/alarm
-      ms-mail: https://gdg-ms-mail.herokuapp.com/alarm
-      ms-subscriber: https://gdg-ms-subscriber.herokuapp.com/alarm
-      ms-team: https://gdg-ms-team.herokuapp.com/api/alarm
-
-
+      ms-alarm: ${CLIENT_SERVICE_URL_MS-ALARM}
+      ms-article: ${CLIENT_SERVICE_URL_MS-ARTICLE}
+      ms-auth: ${CLIENT_SERVICE_URL_MS-AUTH}
+      ms-complaint: ${CLIENT_SERVICE_URL_MS-COMPLAINT}
+      ms-mail: ${CLIENT_SERVICE_URL_MS-MAIL}
+      ms-subscriber: ${CLIENT_SERVICE_URL_MS-SUBSCRIBER}
+      ms-team: ${CLIENT_SERVICE_URL_MS-TEAM}

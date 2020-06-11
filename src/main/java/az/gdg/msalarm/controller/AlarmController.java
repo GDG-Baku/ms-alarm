@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/alarm")
+@CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
 public class AlarmController {
 
-    @CrossOrigin(exposedHeaders = "Access-Control-Allow-Origin")
     @GetMapping
     public String invokeOtherApps() {
         return "All services will be invoked";
